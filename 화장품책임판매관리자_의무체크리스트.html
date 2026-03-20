@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>화장품 책임판매관리자 의무 체크리스트</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: white;
+      padding: 40px 32px 32px;
+    }
+    header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+    header p { font-size: 0.9rem; opacity: 0.7; }
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      margin-top: 12px;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+    /* 우선순위 안내 */
+    .priority-banner {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .priority-banner .icon { font-size: 2rem; flex-shrink: 0; }
+    .priority-banner h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .priority-banner ol { padding-left: 18px; font-size: 0.88rem; opacity: 0.95; }
+    .priority-banner ol li { margin-bottom: 4px; }
+
+    /* 타임라인 섹션 제목 */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 36px 0 16px;
+    }
+    .section-title .dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .section-title h2 { font-size: 1.1rem; font-weight: 700; }
+    .section-title .subtitle { font-size: 0.8rem; color: #666; margin-left: 4px; }
+
+    /* 카드 */
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+      border-left: 5px solid #ddd;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+
+    .card .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .card .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card .emoji { font-size: 1.3rem; }
+    .card h3 { font-size: 1rem; font-weight: 700; }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .card .law { font-size: 0.75rem; color: #888; margin-bottom: 8px; }
+    .card .desc { font-size: 0.88rem; color: #444; }
+    .card .desc ul { padding-left: 16px; margin-top: 6px; }
+    .card .desc ul li { margin-bottom: 4px; }
+    .card .penalty {
+      margin-top: 12px;
+      background: #fff5f5;
+      border: 1px solid #ffd0d0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      color: #c0392b;
+    }
+    .card .penalty strong { font-weight: 700; }
+
+    /* 색상 테마 */
+    .urgent   { border-left-color: #e74c3c; }
+    .monthly  { border-left-color: #e67e22; }
+    .biannual { border-left-color: #8e44ad; }
+    .annual   { border-left-color: #2980b9; }
+    .always   { border-left-color: #27ae60; }
+    .immediate{ border-left-color: #e74c3c; }
+
+    .tag-urgent   { background: #ffeaea; color: #c0392b; }
+    .tag-monthly  { background: #fff3e0; color: #e67e22; }
+    .tag-biannual { background: #f3e5f5; color: #8e44ad; }
+    .tag-annual   { background: #e3f2fd; color: #1565c0; }
+    .tag-always   { background: #e8f5e9; color: #2e7d32; }
+    .tag-immediate{ background: #fdecea; color: #b71c1c; }
+
+    .dot-urgent   { background: #e74c3c; }
+    .dot-monthly  { background: #e67e22; }
+    .dot-biannual { background: #8e44ad; }
+    .dot-annual   { background: #2980b9; }
+    .dot-always   { background: #27ae60; }
+    .dot-immediate{ background: #e74c3c; }
+
+    /* 연간 캘린더 뷰 */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 4px;
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      margin-bottom: 28px;
+      overflow-x: auto;
+    }
+    .cal-month {
+      text-align: center;
+      min-width: 60px;
+    }
+    .cal-month .m-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #666;
+      margin-bottom: 6px;
+    }
+    .cal-event {
+      border-radius: 6px;
+      padding: 4px 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .cal-feb  { background: #fff3e0; color: #e67e22; }
+    .cal-edu  { background: #e3f2fd; color: #1565c0; }
+    .cal-half { background: #f3e5f5; color: #8e44ad; }
+    .cal-always { background: #e8f5e9; color: #2e7d32; }
+    .cal-empty { height: 8px; }
+
+    /* 과태료 요약 */
+    .fine-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .fine-table th {
+      background: #1a1a2e;
+      color: white;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: left;
+    }
+    .fine-table td {
+      padding: 11px 16px;
+      font-size: 0.83rem;
+      border-bottom: 1px solid #f0f2f5;
+    }
+    .fine-table tr:last-child td { border-bottom: none; }
+    .fine-table tr:hover td { background: #f8f9ff; }
+    .fine-amount { font-weight: 700; color: #c0392b; }
+
+    /* 체크박스 */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 0.87rem;
+      cursor: pointer;
+      transition: background 0.1s;
+      border-radius: 6px;
+      padding-left: 4px;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li:hover { background: #f8f9ff; }
+    .checklist li.done { opacity: 0.5; }
+    .checklist li.done .item-text { text-decoration: line-through; color: #999; }
+
+    .checklist input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .checklist input[type="checkbox"]:checked {
+      background: #27ae60;
+      border-color: #27ae60;
+    }
+    .checklist input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 0px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    /* 진행률 바 */
+    .progress-wrap {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .progress-bar-bg {
+      flex: 1;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #27ae60, #2ecc71);
+      border-radius: 10px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .progress-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #27ae60;
+      white-space: nowrap;
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.75rem;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .calendar-grid { grid-template-columns: repeat(6, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>화장품 책임판매관리자</h1>
+  <p>의무사항 및 연간 일정 관리 가이드</p>
+  <div class="badge">📋 화장품법 기준 · 2024~2025 최신</div>
+</header>
+
+<div class="container">
+
+  <!-- 최우선 순서 안내 -->
+  <div class="priority-banner">
+    <div class="icon">🚀</div>
+    <div>
+      <h3>등록 직후 — 뭐부터 해야 하나?</h3>
+      <ol>
+        <li><strong>① 등록면허세 납부</strong> → 의약품안전나라에 영수증 업로드 (전자허가증 발급 조건)</li>
+        <li><strong>② 원료목록 보고</strong> → 유통·판매 <em>전에</em> 반드시 완료 (대한화장품협회 or 수출입협회)</li>
+        <li><strong>③ 책임판매관리자 교육 예약</strong> → 종사 후 <strong>6개월 이내</strong> 최초 교육 이수</li>
+        <li><strong>④ 품질관리기록서 체계 구축</strong> → 제조번호별 품질검사·보관 시스템 마련</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 연간 캘린더 -->
+  <div class="section-title">
+    <div class="dot" style="background:#1a1a2e;"></div>
+    <h2>연간 일정 한눈에 보기</h2>
+  </div>
+
+  <div class="calendar-grid">
+    <!-- 1월 -->
+    <div class="cal-month">
+      <div class="m-name">1월</div>
+      <div class="cal-event cal-half">하반기<br>안전보고</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 2월 -->
+    <div class="cal-month">
+      <div class="m-name">2월</div>
+      <div class="cal-event cal-feb">⚡생산·<br>수입실적</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 3월 -->
+    <div class="cal-month">
+      <div class="m-name">3월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 4월 -->
+    <div class="cal-month">
+      <div class="m-name">4월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 5월 -->
+    <div class="cal-month">
+      <div class="m-name">5월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 6월 -->
+    <div class="cal-month">
+      <div class="m-name">6월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 7월 -->
+    <div class="cal-month">
+      <div class="m-name">7월</div>
+      <div class="cal-event cal-half">상반기<br>안전보고</div>
+      <div class="cal-event cal-edu">교육이수<br>(연중택1)</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 8월 -->
+    <div class="cal-month">
+      <div class="m-name">8월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 9월 -->
+    <div class="cal-month">
+      <div class="m-name">9월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 10월 -->
+    <div class="cal-month">
+      <div class="m-name">10월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 11월 -->
+    <div class="cal-month">
+      <div class="m-name">11월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+    <!-- 12월 -->
+    <div class="cal-month">
+      <div class="m-name">12월</div>
+      <div class="cal-event cal-always">품질관리</div>
+    </div>
+  </div>
+
+  <!-- ① 등록 직후 1회성 -->
+  <div class="section-title">
+    <div class="dot dot-urgent"></div>
+    <h2>등록 직후 — 1회성 처리</h2>
+    <span class="subtitle">빠를수록 좋음</span>
+  </div>
+
+  <div class="card urgent">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">🏛️</span>
+        <h3>등록면허세 납부 + 영수증 업로드</h3>
+      </div>
+      <span class="tag tag-urgent">즉시</span>
+    </div>
+    <div class="law">지방세법 제38조</div>
+    <div class="desc">
+      납부 후 영수증을 의약품안전나라에 업로드해야 <strong>전자허가증 출력 가능</strong>
+      <ul>
+        <li>경로: 의약품안전나라 → 마이페이지 → 나의민원 → 면허세파일첨부</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card urgent">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">🧪</span>
+        <h3>원료목록 보고</h3>
+      </div>
+      <span class="tag tag-urgent">유통 전 필수</span>
+    </div>
+    <div class="law">화장품법 시행규칙 제13조</div>
+    <div class="desc">
+      제품 유통·판매 <strong>전에 반드시</strong> 완료. 성분 변경 시 재보고.
+      <ul>
+        <li>국내 제조·위탁 → <strong>대한화장품협회</strong></li>
+        <li>수입 화장품 → <strong>한국의약품수출입협회</strong></li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>미보고 시:</strong> 과태료 50만원</div>
+  </div>
+
+  <!-- ② 6개월 이내 -->
+  <div class="section-title">
+    <div class="dot dot-monthly"></div>
+    <h2>종사 후 6개월 이내</h2>
+    <span class="subtitle">최초 1회</span>
+  </div>
+
+  <div class="card monthly">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">🎓</span>
+        <h3>최초 책임판매관리자 교육 이수</h3>
+      </div>
+      <span class="tag tag-monthly">6개월 이내</span>
+    </div>
+    <div class="law">화장품법 제5조제7항, 시행규칙 제14조</div>
+    <div class="desc">
+      교육 시간: <strong>4~8시간</strong> (온라인 6시간 또는 집합 교육)
+      <ul>
+        <li>대한화장품협회 — 02-785-7984 / edu.helpcosmetic.or.kr</li>
+        <li>한국의약품수출입협회 — 02-2162-8058 / educos.kpta.or.kr</li>
+        <li>대한화장품산업연구원 — 031-8055-8753 / kcii.re.kr</li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>미이수 시:</strong> 과태료 50만원</div>
+  </div>
+
+  <!-- ③ 매년 2월 말 -->
+  <div class="section-title">
+    <div class="dot dot-monthly"></div>
+    <h2>매년 2월 말까지</h2>
+    <span class="subtitle">연 1회 정기 보고</span>
+  </div>
+
+  <div class="card monthly">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">📊</span>
+        <h3>전년도 생산·수입실적 보고</h3>
+      </div>
+      <span class="tag tag-monthly">매년 2월 말</span>
+    </div>
+    <div class="law">화장품법 제5조제5항, 시행규칙 제13조</div>
+    <div class="desc">
+      <ul>
+        <li>국내 직접·위탁 제조 → <strong>대한화장품협회</strong>에 생산실적 보고</li>
+        <li>수입 화장품 → <strong>한국의약품수출입협회</strong>에 수입실적 보고</li>
+        <li>⚠️ 실적이 없어도 <strong>"없음"으로 반드시 보고</strong></li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>미보고 시:</strong> 과태료 50만원</div>
+  </div>
+
+  <!-- ④ 매년 1회 교육 -->
+  <div class="section-title">
+    <div class="dot dot-annual"></div>
+    <h2>매년 1회 — 교육 갱신</h2>
+    <span class="subtitle">전년 교육일 기준 1년 내 재이수</span>
+  </div>
+
+  <div class="card annual">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">📚</span>
+        <h3>책임판매관리자 보수 교육</h3>
+      </div>
+      <span class="tag tag-annual">연 1회</span>
+    </div>
+    <div class="law">화장품법 시행규칙 제14조</div>
+    <div class="desc">
+      최초 교육일로부터 <strong>1년 이내</strong> 재이수. 이후 매년 반복.
+      <ul>
+        <li>교육 시간: 4~8시간 (온라인 6시간 가능)</li>
+        <li>천재지변·질병·임신·출산 등 사유 시 유예 신청 가능</li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>미이수 시:</strong> 과태료 50만원</div>
+  </div>
+
+  <!-- ⑤ 반기별 안전보고 -->
+  <div class="section-title">
+    <div class="dot dot-biannual"></div>
+    <h2>반기별 — 안전성 정보 정기보고</h2>
+    <span class="subtitle">7월 말 (상반기) · 1월 말 (하반기)</span>
+  </div>
+
+  <div class="card biannual">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">🛡️</span>
+        <h3>안전성 정보 정기보고</h3>
+      </div>
+      <span class="tag tag-biannual">연 2회</span>
+    </div>
+    <div class="law">화장품법 제5조제3항, 화장품 안전성 정보관리 규정 별표 2</div>
+    <div class="desc">
+      신속보고 미해당 안전성 정보를 반기 종료 후 <strong>1개월 이내</strong> 식약처에 보고
+      <ul>
+        <li>상반기 마감: 매년 <strong>7월 31일</strong></li>
+        <li>하반기 마감: 매년 <strong>1월 31일</strong></li>
+        <li>해당 정보가 없으면 "없음" 보고로 갈음 가능</li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>미보고 시:</strong> 과태료 50만원</div>
+  </div>
+
+  <!-- ⑥ 즉시 대응 -->
+  <div class="section-title">
+    <div class="dot dot-immediate"></div>
+    <h2>즉시 대응 — 15일 이내 신속보고</h2>
+    <span class="subtitle">발생 즉시 인지 시점 기준</span>
+  </div>
+
+  <div class="card immediate">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">🚨</span>
+        <h3>중대 유해사례 신속보고</h3>
+      </div>
+      <span class="tag tag-immediate">인지 후 15일</span>
+    </div>
+    <div class="law">화장품법 제5조제3항, 별표 2</div>
+    <div class="desc">
+      다음 사유 발생 시 알게 된 날로부터 <strong>15일 이내</strong> 식약처 보고:
+      <ul>
+        <li>사망, 입원, 선천성 기형 등 중대한 유해사례</li>
+        <li>외국 정부의 판매중지·회수 조치 인지 시</li>
+        <li>국내외 안전성 관련 새로운 중요 정보 확인 시</li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>미보고 시:</strong> 과태료 50만원 + 행정처분 가능</div>
+  </div>
+
+  <!-- ⑦ 상시 업무 -->
+  <div class="section-title">
+    <div class="dot dot-always"></div>
+    <h2>상시 업무 — 일상적 관리</h2>
+    <span class="subtitle">제품 유통 중 지속적으로</span>
+  </div>
+
+  <div class="card always">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">🔬</span>
+        <h3>품질관리 기준 준수</h3>
+      </div>
+      <span class="tag tag-always">상시</span>
+    </div>
+    <div class="law">화장품법 제5조제2항, 시행규칙 별표 1</div>
+    <div class="desc">
+      <ul>
+        <li>제조번호별 품질검사 실시 및 기록 보관</li>
+        <li>제품표준서·품질관리기록서 수령·보관 (전자문서 포함)</li>
+        <li>수입관리기록서 작성 (제품명, 원료성분, 제조국, 수입량, 판매처 등)</li>
+        <li>위탁 제조업체 관리·감독 및 기록 유지</li>
+        <li>비타민A·C·E / 과산화화합물 / 효소 0.5% 이상 함유 제품 → 안정성시험 자료를 사용기한 만료 후 <strong>1년간 보존</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card always">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="emoji">📢</span>
+        <h3>표시·광고 관리</h3>
+      </div>
+      <span class="tag tag-always">상시</span>
+    </div>
+    <div class="law">화장품법 제10조~제14조</div>
+    <div class="desc">
+      <ul>
+        <li>전성분·사용기한·제조번호 등 의무 표시사항 확인</li>
+        <li>금지 광고 9유형 사전 검토 (의약품 혼동, 효능 과장, 허위 전문가 추천 등)</li>
+        <li>광고 실증 자료 상시 보관 → 식약처 요청 시 <strong>15일 이내 제출</strong></li>
+      </ul>
+    </div>
+    <div class="penalty"><strong>위반 시:</strong> 1년 이하 징역 또는 1천만원 이하 벌금</div>
+  </div>
+
+  <!-- 과태료 요약 테이블 -->
+  <div class="section-title">
+    <div class="dot" style="background:#e74c3c;"></div>
+    <h2>위반 시 제재 요약</h2>
+  </div>
+
+  <table class="fine-table">
+    <thead>
+      <tr>
+        <th>위반 사항</th>
+        <th>시기</th>
+        <th>제재</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>최초 교육 미이수</td>
+        <td>종사 후 6개월 초과</td>
+        <td class="fine-amount">과태료 50만원</td>
+      </tr>
+      <tr>
+        <td>연간 교육 미이수</td>
+        <td>매년</td>
+        <td class="fine-amount">과태료 50만원</td>
+      </tr>
+      <tr>
+        <td>생산·수입실적 미보고</td>
+        <td>2월 말 초과</td>
+        <td class="fine-amount">과태료 50만원</td>
+      </tr>
+      <tr>
+        <td>원료목록 미보고</td>
+        <td>유통 전 미이행</td>
+        <td class="fine-amount">과태료 50만원</td>
+      </tr>
+      <tr>
+        <td>안전성 정보 미보고</td>
+        <td>반기 종료 후 1개월 초과</td>
+        <td class="fine-amount">과태료 50만원</td>
+      </tr>
+      <tr>
+        <td>중대 유해사례 미신고</td>
+        <td>인지 후 15일 초과</td>
+        <td class="fine-amount">과태료 50만원 + 행정처분</td>
+      </tr>
+      <tr>
+        <td>표시·광고 위반</td>
+        <td>즉시</td>
+        <td class="fine-amount">1년 이하 징역 / 1천만원 벌금</td>
+      </tr>
+      <tr>
+        <td>반복 위반</td>
+        <td>누적 시</td>
+        <td class="fine-amount">업무정지 → 등록취소 / 과징금 최대 10억원</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 주의사항 -->
+  <div style="background:#fffbea; border:1px solid #f0d060; border-radius:12px; padding:14px 18px; margin-top:40px; margin-bottom:28px; display:flex; align-items:flex-start; gap:12px;">
+    <span style="font-size:1.2rem; flex-shrink:0;">⚠️</span>
+    <div style="font-size:0.82rem; color:#7a6000; line-height:1.7;">
+      <strong style="display:block; margin-bottom:4px;">체크리스트 사용 전 확인하세요</strong>
+      이 체크리스트는 <strong>본인 브라우저에만 저장되는 참고용</strong>입니다. 체크한 내용은 다른 사람에게 공유되거나 반영되지 않습니다.<br>
+      실제 업무 진행 상황은 별도 문서·협업 툴에 기록하거나 담당자에게 직접 공유해 주세요.
+    </div>
+  </div>
+
+  <!-- 전체 체크리스트 -->
+  <div class="section-title">
+    <div class="dot" style="background:#555;"></div>
+    <h2>전체 체크리스트</h2>
+  </div>
+
+  <div class="card" style="border-left-color: #555;">
+
+    <!-- 진행률 바 -->
+    <div class="progress-wrap">
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-label" id="progressLabel">0 / 15</span>
+      <button onclick="resetAll()" style="font-size:0.72rem; padding:3px 10px; border:1px solid #ddd; border-radius:20px; background:white; color:#888; cursor:pointer;">초기화</button>
+    </div>
+
+    <h3 style="margin-bottom:12px; font-size:0.95rem;">📋 등록 직후</h3>
+    <ul class="checklist" id="group-register">
+      <li data-id="r1"><input type="checkbox" id="r1"><label for="r1" class="item-text">등록면허세 납부 완료</label></li>
+      <li data-id="r2"><input type="checkbox" id="r2"><label for="r2" class="item-text">의약품안전나라 영수증 업로드 → 전자허가증 출력</label></li>
+      <li data-id="r3"><input type="checkbox" id="r3"><label for="r3" class="item-text">유통 예정 제품 원료목록 보고 (대한화장품협회 or 수출입협회)</label></li>
+      <li data-id="r4"><input type="checkbox" id="r4"><label for="r4" class="item-text">책임판매관리자 교육 예약 (6개월 이내 완료)</label></li>
+      <li data-id="r5"><input type="checkbox" id="r5"><label for="r5" class="item-text">품질관리기록서·제품표준서 보관 체계 구축</label></li>
+    </ul>
+
+    <h3 style="margin-bottom:12px; margin-top:20px; font-size:0.95rem;">📋 매년 1월 31일까지</h3>
+    <ul class="checklist" id="group-jan">
+      <li data-id="j1"><input type="checkbox" id="j1"><label for="j1" class="item-text">하반기 안전성 정보 정기보고 (식약처)</label></li>
+    </ul>
+
+    <h3 style="margin-bottom:12px; margin-top:20px; font-size:0.95rem;">📋 매년 2월 말까지</h3>
+    <ul class="checklist" id="group-feb">
+      <li data-id="f1"><input type="checkbox" id="f1"><label for="f1" class="item-text">전년도 생산실적 보고 → 대한화장품협회</label></li>
+      <li data-id="f2"><input type="checkbox" id="f2"><label for="f2" class="item-text">전년도 수입실적 보고 → 한국의약품수출입협회</label></li>
+    </ul>
+
+    <h3 style="margin-bottom:12px; margin-top:20px; font-size:0.95rem;">📋 매년 7월 31일까지</h3>
+    <ul class="checklist" id="group-jul">
+      <li data-id="u1"><input type="checkbox" id="u1"><label for="u1" class="item-text">상반기 안전성 정보 정기보고 (식약처)</label></li>
+    </ul>
+
+    <h3 style="margin-bottom:12px; margin-top:20px; font-size:0.95rem;">📋 매년 1회 (연중 자유 선택)</h3>
+    <ul class="checklist" id="group-annual">
+      <li data-id="a1"><input type="checkbox" id="a1"><label for="a1" class="item-text">책임판매관리자 교육 이수 (4~8시간)</label></li>
+    </ul>
+
+    <h3 style="margin-bottom:12px; margin-top:20px; font-size:0.95rem;">📋 수시 (상시)</h3>
+    <ul class="checklist" id="group-always">
+      <li data-id="s1"><input type="checkbox" id="s1"><label for="s1" class="item-text">제조번호별 품질검사 실시 및 기록 보관</label></li>
+      <li data-id="s2"><input type="checkbox" id="s2"><label for="s2" class="item-text">신제품 출시 전 원료목록 보고 완료 여부 확인</label></li>
+      <li data-id="s3"><input type="checkbox" id="s3"><label for="s3" class="item-text">광고 집행 전 금지 행위 해당 여부 검토</label></li>
+      <li data-id="s4"><input type="checkbox" id="s4"><label for="s4" class="item-text">광고 실증 자료 보관</label></li>
+      <li data-id="s5"><input type="checkbox" id="s5"><label for="s5" class="item-text">중대 유해사례 발생 시 15일 이내 신속보고</label></li>
+    </ul>
+
+  </div>
+
+</div>
+
+<footer>
+  화장품법 · 시행규칙 기준 (2024~2025) | 식품의약품안전처 | 법령 변경 시 내용 확인 필요
+</footer>
+
+<script>
+  const STORAGE_KEY = 'cosmetics_checklist';
+  const allIds = ['r1','r2','r3','r4','r5','j1','f1','f2','u1','a1','s1','s2','s3','s4','s5'];
+
+  function saveState() {
+    const state = {};
+    allIds.forEach(id => {
+      state[id] = document.getElementById(id).checked;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function loadState() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    allIds.forEach(id => {
+      const cb = document.getElementById(id);
+      if (state[id]) {
+        cb.checked = true;
+        cb.closest('li').classList.add('done');
+      }
+    });
+  }
+
+  function updateProgress() {
+    const total = allIds.length;
+    const done = allIds.filter(id => document.getElementById(id).checked).length;
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = done + ' / ' + total;
+    if (done === total) {
+      document.getElementById('progressLabel').textContent = '✅ ' + done + ' / ' + total + ' 완료!';
+    }
+  }
+
+  function resetAll() {
+    if (!confirm('체크리스트를 모두 초기화할까요?')) return;
+    allIds.forEach(id => {
+      const cb = document.getElementById(id);
+      cb.checked = false;
+      cb.closest('li').classList.remove('done');
+    });
+    localStorage.removeItem(STORAGE_KEY);
+    updateProgress();
+  }
+
+  // 이벤트 등록
+  allIds.forEach(id => {
+    const cb = document.getElementById(id);
+    cb.addEventListener('change', function() {
+      const li = this.closest('li');
+      li.classList.toggle('done', this.checked);
+      saveState();
+      updateProgress();
+    });
+  });
+
+  // 항목 클릭 시 체크박스 토글 (라벨 영역 클릭도 포함)
+  document.querySelectorAll('.checklist li').forEach(li => {
+    li.addEventListener('click', function(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
+      const cb = this.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      cb.dispatchEvent(new Event('change'));
+    });
+  });
+
+  // 초기화
+  loadState();
+  updateProgress();
+</script>
+
+</body>
+</html>
