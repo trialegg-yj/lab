@@ -201,6 +201,32 @@
     font-size:12px; color:var(--muted);
   }
 
+  /* SUB TABS */
+  .sub-tabs { display:flex; gap:0; margin:0 0 28px; border-bottom:2px solid var(--border); }
+  .sub-tab-btn {
+    padding:10px 22px; font-size:13px; font-weight:700; cursor:pointer;
+    border:none; background:transparent; color:var(--muted);
+    border-bottom:2px solid transparent; margin-bottom:-2px; transition:all .2s;
+  }
+  .sub-tab-btn:hover { color:var(--purple); }
+  .sub-tab-btn.active { color:var(--purple); border-bottom-color:var(--purple); }
+  .sub-panel { display:none; }
+  .sub-panel.active { display:block; }
+
+  /* CHECK LIST CARD */
+  .check-card {
+    background:var(--green-light); border-radius:10px; padding:16px 20px; margin-top:12px;
+  }
+  .check-card-title {
+    font-size:11px; font-weight:800; letter-spacing:1.5px; color:var(--green);
+    margin-bottom:10px; text-transform:uppercase;
+  }
+  .check-item {
+    font-size:13px; color:var(--body); line-height:1.8;
+    padding-left:18px; position:relative;
+  }
+  .check-item::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:700; }
+
   @media(max-width:640px) {
     .hero { padding:40px 24px 36px; }
     .hero-title { font-size:26px; }
@@ -727,6 +753,13 @@
   <!-- ── TAB 5: 핵심 사례 분석 ── -->
   <div id="tab-cases" class="tab-panel">
 
+    <div class="sub-tabs">
+      <button class="sub-tab-btn active" onclick="switchSubTab('cases1', this)">05-1 신제품 스포 전략</button>
+      <button class="sub-tab-btn" onclick="switchSubTab('cases2', this)">05-2 뷰티 × 크리에이터 공동개발</button>
+    </div>
+
+    <div id="sub-cases1" class="sub-panel active">
+
     <div class="insight-bar">
       올영세일·봄 시즌(3/1~4/1)을 앞두고 K뷰티 브랜드들이 실행한 <strong>신제품 스포 전략 6가지</strong> 패턴을 실제 사례와 함께 분석합니다.
     </div>
@@ -1079,6 +1112,158 @@
       </div>
     </div>
 
+    </div><!-- /sub-cases1 -->
+
+    <div id="sub-cases2" class="sub-panel">
+
+      <div class="insight-bar">
+        공동개발은 단순한 협업을 넘어 <strong>사전 설계가 필요한 프로젝트</strong>입니다. 컨셉과 콘텐츠, 운영 방향까지 시작 전에 정리하지 않으면 실행 단계에서 전체 흐름이 쉽게 흔들릴 수 있습니다.
+      </div>
+
+      <div class="section-label">📈 트렌드 배경</div>
+      <div class="card" style="border-left:4px solid var(--purple);">
+        <div class="card-name" style="font-size:17px;">요즘 뷰티씬, 왜 공동개발이 이렇게 많아졌을까?</div>
+        <div class="card-desc" style="margin-top:8px;">
+          공동개발은 더 이상 특별한 이벤트가 아닙니다. 뷰티씬에서는 크리에이터와 공동개발을 전제로
+          <strong>제품 기획 자체가 시작되는 흐름</strong>으로 변화하고 있어요.
+          출시 이전부터 기대와 공감을 쌓아가며 관계, 과정, 전환이 유기적으로 연결된 전략으로 확장되고 있습니다.
+        </div>
+        <div class="card-meta" style="margin-top:12px;">
+          <span class="meta-pill">제품이 만들어지는 과정에서 팔린다</span>
+          <span class="meta-pill">사전 설계 필수</span>
+          <span class="meta-pill green">올리브영 장악 중</span>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">🛒 올리브영을 장악중인 공동개발 뷰티템</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;">
+        <div class="card" style="margin-bottom:0;padding:16px 18px;"><div class="card-name" style="font-size:13px;">리브러쉬</div><div class="card-desc" style="font-size:12px;margin-top:4px;">레오제이 공동개발 · NEW 리브러쉬</div></div>
+        <div class="card" style="margin-bottom:0;padding:16px 18px;"><div class="card-name" style="font-size:13px;">에뮤드</div><div class="card-desc" style="font-size:12px;margin-top:4px;">에뮤드 × 조효진 공동개발 · 에뮤드</div></div>
+        <div class="card" style="margin-bottom:0;padding:16px 18px;"><div class="card-name" style="font-size:13px;">미샤</div><div class="card-desc" style="font-size:12px;margin-top:4px;">후니언 공동개발 · 미샤 글로우 스킨</div></div>
+        <div class="card" style="margin-bottom:0;padding:16px 18px;"><div class="card-name" style="font-size:13px;">더툴랩</div><div class="card-desc" style="font-size:12px;margin-top:4px;">1동 브러쉬 · 헬름랩 공동개발 커버</div></div>
+        <div class="card" style="margin-bottom:0;padding:16px 18px;"><div class="card-name" style="font-size:13px;">이네트</div><div class="card-desc" style="font-size:12px;margin-top:4px;">소운 공동개발 · 속눈썹 세럼 이네트</div></div>
+        <div class="card" style="margin-bottom:0;padding:16px 18px;"><div class="card-name" style="font-size:13px;">구달</div><div class="card-desc" style="font-size:12px;margin-top:4px;">3월 올림픽 · 규진 공동개발 구달 여성초</div></div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">🔄 공동개발 구조의 진화</div>
+      <div class="insight-card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <div class="insight-num">→</div>
+          <div class="insight-title">'여럿이 만드는 구조'로 확장 중</div>
+        </div>
+        <div class="insight-body">기존 공동개발이 브랜드 × 크리에이터 간 <strong>1:1 협업 구조</strong>에 가까웠다면, 이제는 다수의 크리에이터가 참여하는 방식으로 확장되며 각기 다른 관점과 전문성을 하나의 제품에 반영하는 <strong>구조적 변화</strong>로 볼 수 있습니다.</div>
+        <div class="insight-examples">
+          <p>📌 <strong>투쿨포스쿨 × 레오제이 + 아랑 + 독신(toxin1204)</strong> — 복수의 크리에이터가 함께 만든 '베일 스킨 틴트' 예고</p>
+          <p>📌 결과적으로 공동개발이 하나의 전략으로 자리 잡으면서, <strong>초기 설계의 중요성</strong>도 더욱 커지고 있음</p>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">⚙️ 참여 범위에 따른 공동개발 유형</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+        <div class="card" style="margin-bottom:0;border-top:3px solid var(--purple);">
+          <div class="card-name" style="color:var(--purple);">자문형 (약 3개월~)</div>
+          <div class="card-desc" style="margin-top:8px;"><div style="padding:4px 0;">• 제품 기획 완료 상태로 자문 참여</div><div style="padding:4px 0;">• 비교적 일정 단축 가능</div></div>
+        </div>
+        <div class="card" style="margin-bottom:0;border-top:3px solid var(--green);">
+          <div class="card-name" style="color:var(--green);">고관여형 (약 6개월~)</div>
+          <div class="card-desc" style="margin-top:8px;"><div style="padding:4px 0;">• 컨셉·제형·성분 등 제품 디테일한 요소 참여</div><div style="padding:4px 0;">• 기획 → 개발 → 론칭 전 과정 설계</div></div>
+        </div>
+      </div>
+      <div class="check-card">
+        <div class="check-card-title">CHECK LIST — 시작 전 확인</div>
+        <div class="check-item">공동개발 기획 내용 (방향성, 제품군, 성분, 목표일 등)</div>
+        <div class="check-item">공동개발자의 참여 범위 명확화</div>
+        <div class="check-item">자문 및 미팅 횟수 사전 합의</div>
+        <div class="check-item">제품 개발 수정 가능 범위 정의</div>
+        <div class="check-item">콘텐츠 사전 설계 논의</div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">🎯 크리에이터 선정 포인트</div>
+      <div class="card" style="border-left:4px solid var(--gold);">
+        <div class="card-name">"관계가 없는 공동개발은 설득이 길어진다"</div>
+        <div class="card-desc" style="margin-top:8px;">팬들은 새로운 협업보다 <strong>확장된 관계에 더 빠르게 반응</strong>합니다. 기존 제품 사용 경험이 있거나 제품과의 관계가 누적된 크리에이터라면 공동개발의 설득력은 훨씬 높아질 수 있어요.</div>
+        <div class="check-card" style="margin-top:12px;">
+          <div class="check-card-title">CHECK LIST — 크리에이터 선정 기준</div>
+          <div class="check-item">기존 제품 사용 경험 여부</div>
+          <div class="check-item">제품 리뷰 콘텐츠 히스토리 존재 여부</div>
+          <div class="check-item">팬덤과 제품 타겟의 일치도</div>
+          <div class="check-item">특정 카테고리에서 전문성 포지션 확보 여부</div>
+          <div class="check-item">부정 이슈 여부</div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">📌 크리에이터 선정 실제 사례</div>
+      <div class="card-grid">
+        <div class="card" style="margin-bottom:0;border-left:4px solid var(--rose);">
+          <div style="font-size:11px;font-weight:800;color:var(--rose);margin-bottom:8px;letter-spacing:1px;">CASE 1</div>
+          <div class="card-name">페리페라 × 인브라</div>
+          <div class="card-desc" style="margin-top:6px;">24년 평소 즐겨쓰는 템으로 소개된 페리페라 올테이크 무드 팔레트<br>25년 '사방 트임' 컨셉으로 공동개발템 론칭 → <strong>선런칭 시 3일치 물량 하루만에 전량 소진</strong></div>
+          <div class="card-meta"><span class="meta-pill">기존 사용자</span><span class="meta-pill">사방 트임</span><span class="meta-pill" style="background:var(--rose-light);color:var(--rose);">3일치 물량 소진</span></div>
+        </div>
+        <div class="card" style="margin-bottom:0;border-left:4px solid var(--purple);">
+          <div style="font-size:11px;font-weight:800;color:var(--purple);margin-bottom:8px;letter-spacing:1px;">CASE 2</div>
+          <div class="card-name">리브러쉬 × 레오제이</div>
+          <div class="card-desc" style="margin-top:6px;">구강 관리에 진심인 레오제이의 추천 브랜드로 '리브러쉬' 언급<br>리브러쉬 × 레오제이 마켓 및 콘텐츠 노출로 <strong>3억 매출 달성</strong><br>26년 '과즙 가글' 컨셉으로 공동개발템 론칭 → <strong>론칭 한 시간만에 역대 매출 달성</strong></div>
+          <div class="card-meta"><span class="meta-pill">전문성 매칭</span><span class="meta-pill">과즙 가글</span><span class="meta-pill" style="background:var(--purple-light);color:var(--purple);">역대 매출</span></div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">🎬 공동개발을 완성하는 6가지 콘텐츠</div>
+      <div class="card" style="margin-bottom:14px;">
+        <div class="card-name">"공동개발에서 중요한 것은 완성된 제품이 아니라, 제품이 만들어지는 과정에 대한 참여 경험입니다."</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px;">
+          <div style="background:var(--purple-soft);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;">1. 스포일러</div><div style="font-size:12px;color:var(--body);">화보 현장, 본사 방문 등 일상 내 노출 → 궁금증 생성</div></div>
+          <div style="background:var(--purple-soft);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;">2. 개발 스토리</div><div style="font-size:12px;color:var(--body);">제품 테스트부터 수정 과정의 개발 일지 공개 → 신뢰 축적</div></div>
+          <div style="background:var(--purple-soft);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;">3. 사전 체험단</div><div style="font-size:12px;color:var(--body);">온라인 체험단, 클래스, 론칭 밋업회 등 → 참여감 형성</div></div>
+          <div style="background:var(--purple-soft);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;">4. 공동개발템 론칭</div><div style="font-size:12px;color:var(--body);">일자, 가격, 제품명 등 소개</div></div>
+          <div style="background:var(--purple-soft);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;">5. 헬프 콘텐츠</div><div style="font-size:12px;color:var(--body);">Q&A, 제품 사용법, 큐레이션 등 정보 전달</div></div>
+          <div style="background:var(--purple-soft);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;">6. 후기 리그램</div><div style="font-size:12px;color:var(--body);">제품 관련 리액션 및 팬 반응 공유</div></div>
+        </div>
+        <div class="check-card" style="margin-top:14px;">
+          <div class="check-card-title">CHECK LIST — 콘텐츠 운영</div>
+          <div class="check-item">기획 회의 공개 & 본사·연구소 등 방문</div>
+          <div class="check-item">개발 제품 테스트 & 수정 과정 등 개발 스토리 누적</div>
+          <div class="check-item">사전 제품 체험 관련 온·오프라인 경험 제공</div>
+          <div class="check-item">공동 개발 제품 론칭 및 공개</div>
+          <div class="check-item">Q&A, 제품 사용법, 큐레이션 등 헬프 콘텐츠</div>
+          <div class="check-item">리액션 및 팬 후기 리그램</div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">💰 사전 설계 & 예산 구조</div>
+      <div class="card-grid">
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-name">사전 설계 체크리스트</div>
+          <div class="check-card" style="margin-top:10px;">
+            <div class="check-card-title">CHECK LIST</div>
+            <div class="check-item">제품 개발 범위 및 참여 방식<br><span style="font-size:11px;color:var(--muted);padding-left:18px;display:block;">: 개발 참여와 자문 형태 및 범위, 기여도에 따른 보상 방식 등</span></div>
+            <div class="check-item">홍보 콘텐츠 제작 범위<br><span style="font-size:11px;color:var(--muted);padding-left:18px;display:block;">: 콘텐츠 수량 / 채널 / 업로드 시점 / 화보 활영 여부 등</span></div>
+            <div class="check-item">2차 라이선스 활용 범위<br><span style="font-size:11px;color:var(--muted);padding-left:18px;display:block;">: 초상권 & 성명권 / 광고 매체 / 기간 등</span></div>
+            <div class="check-item">커머스 연계 여부 (마켓/라이브)<br><span style="font-size:11px;color:var(--muted);padding-left:18px;display:block;">: 마켓 / 라이브 커머스 / RS 구조 등</span></div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-name">공동개발 예산 구조 예시</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+            <div style="background:var(--purple-soft);border-radius:8px;padding:12px;"><div style="font-size:12px;font-weight:800;color:var(--purple);">자문 및 개발</div><div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;">공동개발 제품 피드백<br>온/오프라인 미팅 등</div></div>
+            <div style="background:var(--green-light);border-radius:8px;padding:12px;"><div style="font-size:12px;font-weight:800;color:var(--green);">체험단 및 이벤트</div><div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;">체험단 선정/제품 발송 등<br>오프라인 이벤트 진행비</div></div>
+            <div style="background:var(--purple-soft);border-radius:8px;padding:12px;"><div style="font-size:12px;font-weight:800;color:var(--purple);">콘텐츠</div><div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;">공동개발 이슈업<br>콘텐츠 및 바이럴</div></div>
+            <div style="background:var(--gold-light);border-radius:8px;padding:12px;"><div style="font-size:12px;font-weight:800;color:var(--gold);">2차 라이선스</div><div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;">광고/마케팅/커머스 등<br>2차 활용비</div></div>
+            <div style="background:var(--rose-light);border-radius:8px;padding:12px;"><div style="font-size:12px;font-weight:800;color:var(--rose);">화보 촬영</div><div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;">헤어/메이크업/스타일링<br>포토그래퍼 등 섭외비</div></div>
+            <div style="background:var(--green-light);border-radius:8px;padding:12px;"><div style="font-size:12px;font-weight:800;color:var(--green);">커머스</div><div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6;">마켓/라이브 커머스<br>참여 및 진행비</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:28px;">💡 핵심 인사이트</div>
+      <div class="card" style="border-left:4px solid var(--purple);background:var(--purple-deep);color:#fff;">
+        <div style="font-size:18px;font-weight:900;line-height:1.4;margin-bottom:12px;">'완성된 제품'이 아니라<br>'만들어지는 과정'을 설계한다</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:16px;">공동개발은 함께 만들어가는 공동의 결과물인 동시에 <strong style="color:#fff;">제품이 만들어지고 소비되는 방식을 재설계하는 전략</strong>입니다. 이제 소비자는 완성된 결과물이 아니라 만들어지는 과정과 맥락까지 함께 소비합니다.</div>
+        <div style="font-size:14px;font-weight:800;color:var(--purple-mid);">"결국 공동개발은 설득을 넘어, 관계가 만든 구매입니다."</div>
+      </div>
+
+    </div><!-- /sub-cases2 -->
+
   </div><!-- /tab-cases -->
 
 </div><!-- /container -->
@@ -1093,6 +1278,13 @@ function switchTab(tab) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
   event.target.closest('.tab-btn').classList.add('active');
+}
+function switchSubTab(id, btn) {
+  btn.closest('.sub-tabs').querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const parent = btn.closest('.tab-panel');
+  parent.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('sub-' + id).classList.add('active');
 }
 </script>
 
