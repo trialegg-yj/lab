@@ -1082,6 +1082,16 @@ function switchTab(tab, btn) {
   document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
 }
+
+// URL 해시로 초기 탭 설정 (e.g., strategy-2026.html#revenue)
+(function() {
+  const hash = location.hash.replace('#', '');
+  if (hash) {
+    const panel = document.getElementById('tab-' + hash);
+    const btn = document.querySelector('[onclick*="' + hash + '"]');
+    if (panel && btn) switchTab(hash, btn);
+  }
+})();
 </script>
 
 </body>
