@@ -310,16 +310,32 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
             </div>
           </div>
         </div>
-        <div class="concept-ex">
-          <b>예시 1.</b> 룻 메뉴 변경 (프로젝트)<br>
-          &nbsp;&nbsp;&nbsp;→ 26년 봄 (에픽)<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 26년 봄 기획 &nbsp;·&nbsp; 26년 봄 레시피 개발 &nbsp;·&nbsp; 원가 계산 (태스크)
-        </div>
-        <div class="concept-ex" style="margin-top:6px;">
-          <b>예시 2.</b> 화장품 책임판매업 등록 (프로젝트)<br>
-          &nbsp;&nbsp;&nbsp;→ 서류 준비 &nbsp;/&nbsp; 기관 제출·신청 &nbsp;/&nbsp; 후속 대응 (에픽)<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 화장품책임판매업 등록 신청서 작성 &nbsp;·&nbsp; 제출 기관 확인 &nbsp;·&nbsp; 화장품 책임판매관리자 교육 이수 (태스크)
-        </div>
+        <details style="margin-top:8px;" class="concept-ex">
+          <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px;font-size:13px;color:#6b7280;user-select:none;">
+            <span style="font-size:11px;transition:transform .2s;" class="toggle-arrow">▶</span>
+            <b style="color:#374151;">예시 보기</b>
+          </summary>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+            <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.8;">
+              <b>예시 1.</b> 룻 메뉴 변경 (프로젝트)<br>
+              &nbsp;&nbsp;&nbsp;→ 26년 봄 (에픽)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 26년 봄 기획 &nbsp;·&nbsp; 26년 봄 레시피 개발 &nbsp;·&nbsp; 원가 계산 (태스크)
+            </div>
+            <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.8;">
+              <b>예시 2.</b> 화장품 책임판매업 등록 (프로젝트)<br>
+              &nbsp;&nbsp;&nbsp;→ 서류 준비 &nbsp;/&nbsp; 기관 제출·신청 &nbsp;/&nbsp; 후속 대응 (에픽)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 화장품책임판매업 등록 신청서 작성 &nbsp;·&nbsp; 제출 기관 확인 &nbsp;·&nbsp; 화장품 책임판매관리자 교육 이수 (태스크)
+            </div>
+          </div>
+        </details>
+        <script>
+          document.querySelectorAll('details.concept-ex').forEach(d => {
+            d.addEventListener('toggle', () => {
+              const arrow = d.querySelector('.toggle-arrow');
+              if (arrow) arrow.style.transform = d.open ? 'rotate(90deg)' : '';
+            });
+          });
+        </script>
       </div>
     </div>
 
