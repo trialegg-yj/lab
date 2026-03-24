@@ -87,6 +87,25 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 .step p  { font-size:14px; color:#374151; line-height:1.7; }
 
 .tip { background:#ede9fe; border-radius:10px; padding:14px 16px; font-size:14px; color:#4c1d95; line-height:1.7; margin-top:14px; }
+
+/* 탭 */
+.tab-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
+.tab-btn { padding:7px 14px; border-radius:20px; border:1.5px solid #e5e7eb; background:white; font-size:13px; font-weight:600; color:#6b7280; cursor:pointer; transition:all .15s; }
+.tab-btn:hover { border-color:#c4b5fd; color:#4f46e5; }
+.tab-btn.active { background:#4f46e5; border-color:#4f46e5; color:white; }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* 시나리오 */
+.scenario { background:#f5f3ff; border-left:3px solid #4f46e5; border-radius:0 10px 10px 0; padding:14px 16px; margin-bottom:16px; font-size:14px; color:#374151; line-height:1.75; }
+.scenario .ctx { font-size:13px; color:#6b7280; }
+.feat-step { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid #f3f4f6; align-items:flex-start; }
+.feat-step:last-child { border-bottom:none; }
+.feat-num { width:22px; height:22px; border-radius:50%; background:#ede9fe; color:#4f46e5; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:3px; }
+.feat-step p { font-size:14px; color:#374151; line-height:1.75; margin:0; }
+.feat-tag { display:inline-block; padding:2px 9px; border-radius:6px; font-size:12px; font-weight:700; margin:0 2px; vertical-align:middle; }
+.feat-tag.btn  { background:#ede9fe; color:#4c1d95; }
+.feat-tag.view { background:#ecfdf5; color:#065f46; }
 </style>
 </head>
 <body>
@@ -416,6 +435,119 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     </div>
   </div>
 
+  <!-- ── 04 · 기능 가이드 ── -->
+  <div class="card">
+    <div class="sec-label">04 · 기능 가이드</div>
+    <div class="sec-title">상황별로 이렇게 써요</div>
+    <div class="sec-desc">내 상황과 가장 가까운 케이스를 선택하세요.</div>
+    <div class="sec-divider"></div>
+
+    <div class="tab-nav">
+      <button class="tab-btn active"  onclick="switchTab(0)">새 업무 시작</button>
+      <button class="tab-btn"         onclick="switchTab(1)">업무 요청하기</button>
+      <button class="tab-btn"         onclick="switchTab(2)">내 할 일 확인</button>
+      <button class="tab-btn"         onclick="switchTab(3)">일정·회의 관리</button>
+      <button class="tab-btn"         onclick="switchTab(4)">전체 현황 파악</button>
+      <button class="tab-btn"         onclick="switchTab(5)">자료 찾기·공유</button>
+    </div>
+
+    <!-- ① 새 업무 시작 -->
+    <div class="tab-panel active">
+      <div class="scenario">
+        <b>"룻 메뉴 변경" 프로젝트를 팀에서 새로 시작하기로 했어요.</b><br>
+        <span class="ctx">큰 방향(프로젝트) → 작업 묶음(에픽) → 세부 액션(태스크) 순서로 만들면 돼요.</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:4px 16px;">
+        <div class="feat-step"><div class="feat-num">1</div><p>대시보드 🥊 프로젝트 섹션에서 <span class="feat-tag btn">프로젝트 추가하기</span> 클릭<br>레벨이 🏆 프로젝트로 고정된 페이지가 생성돼요. <b>[직접 진행] 업무명</b> 템플릿이 자동 적용돼요.</p></div>
+        <div class="feat-step"><div class="feat-num">2</div><p>페이지 열어서 <b>제목·분야·우선순위·마감일</b> 입력<br><span style="color:#6b7280;font-size:13px;">담당자·시작일·진행상태는 자동으로 채워져 있어요. 필요하면 변경할 수 있어요.</span></p></div>
+        <div class="feat-step"><div class="feat-num">3</div><p><span class="feat-tag btn">에픽 추가하기</span> 클릭 → "26년 봄" 에픽 생성<br>상위 항목에 방금 만든 프로젝트를 연결하면 진행률이 자동 집계돼요.</p></div>
+        <div class="feat-step"><div class="feat-num">4</div><p><span class="feat-tag btn">태스크 추가하기(직접 진행)</span> 클릭 → "26년 봄 기획" 등 세부 태스크 생성<br>상위 항목에 에픽을 연결하면 에픽 진행률에도 반영돼요.</p></div>
+        <div class="feat-step"><div class="feat-num">5</div><p>태스크가 끝나면 <b>완료여부 체크박스</b> 클릭 → 상위 에픽·프로젝트 진행률이 자동으로 올라가요.</p></div>
+      </div>
+    </div>
+
+    <!-- ② 업무 요청 -->
+    <div class="tab-panel">
+      <div class="scenario">
+        <b>내가 직접 하기 어려운 업무를 팀원에게 넘겨야 해요.</b><br>
+        <span class="ctx">요청 태스크는 제약사항·맥락을 작성하는 섹션이 포함된 별도 템플릿으로 만들어져요.</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:4px 16px;">
+        <div class="feat-step"><div class="feat-num">1</div><p><span class="feat-tag btn">태스크 추가하기(요청)</span> 클릭<br>레벨이 ✅ 태스크로 고정된 페이지가 생성돼요. <b>[요청] 업무명</b> 템플릿에는 직접 진행과 달리 제약사항 섹션이 포함돼요.</p></div>
+        <div class="feat-step"><div class="feat-num">2</div><p><b>담당자</b>에 요청할 팀원 지정, <b>참조자</b>에 나를 추가하면 진행 상황을 계속 공유받을 수 있어요.</p></div>
+        <div class="feat-step"><div class="feat-num">3</div><p>템플릿의 제약사항 섹션에 <b>배경·요청 범위·마감 이유</b>를 적어두면 받는 사람이 맥락을 빠르게 파악할 수 있어요.</p></div>
+        <div class="feat-step"><div class="feat-num">4</div><p>상위 항목에 관련 에픽·프로젝트 연결 → 어느 프로젝트의 일인지 연결고리가 생겨 나중에 추적하기 쉬워요.</p></div>
+      </div>
+    </div>
+
+    <!-- ③ 내 할 일 확인 -->
+    <div class="tab-panel">
+      <div class="scenario">
+        <b>출근하자마자 오늘 뭐부터 해야 할지 정리하고 싶어요.</b><br>
+        <span class="ctx">대시보드 임베딩 뷰, 프로젝트 DB, 개인 페이지 세 곳에서 확인할 수 있어요.</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:4px 16px;">
+        <div class="feat-step"><div class="feat-num">1</div><p>대시보드 🥊 프로젝트 섹션 → <span class="feat-tag view">내 프로젝트</span> 탭 클릭<br>내가 담당자인 항목만 즉시 확인할 수 있어요.</p></div>
+        <div class="feat-step"><div class="feat-num">2</div><p><span class="feat-tag view">분야별</span> 탭으로 전환하면 사업기획·주류사업 등 업무 카테고리 기준으로 묶어서 볼 수 있어요.</p></div>
+        <div class="feat-step"><div class="feat-num">3</div><p>더 상세하게 보려면 <b>프로젝트 바로가기</b> 클릭 → <span class="feat-tag view">내 담당</span> 뷰<br>우선순위(P1→P4)·마감일 기준으로 자동 정렬된 내 전체 업무가 한눈에 보여요.</p></div>
+        <div class="feat-step"><div class="feat-num">4</div><p>개인 페이지에서는 필터·정렬을 자유롭게 바꿔가며 나만의 뷰로 커스텀할 수 있어요.</p></div>
+      </div>
+    </div>
+
+    <!-- ④ 일정·회의 관리 -->
+    <div class="tab-panel">
+      <div class="scenario">
+        <b>다음 주 외부 미팅이 잡혔어요. 팀에 공유하고 나중에 회의록도 남기고 싶어요.</b><br>
+        <span class="ctx">모든 팀 일정과 회의록은 📅 공유일정에서 통합 관리해요.</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:4px 16px;">
+        <div class="feat-step"><div class="feat-num">1</div><p>대시보드 📅 공유일정 섹션 → 일정 추가 버튼 클릭<br><b>날짜·참여자·태그(외부미팅)·장소</b> 입력 후 저장하면 팀 전체에 공유돼요.</p></div>
+        <div class="feat-step"><div class="feat-num">2</div><p><span class="feat-tag view">달력</span> 뷰로 전환하면 팀 전체 일정을 월·주 단위로 한눈에 확인할 수 있어요.</p></div>
+        <div class="feat-step"><div class="feat-num">3</div><p>미팅 당일, <b>회의 시작 전 녹음 버튼</b>을 눌러 진행해요.</p></div>
+        <div class="feat-step"><div class="feat-num">4</div><p>회의가 끝나면 해당 공유일정 페이지 안에 <b>회의록을 기록</b>하고 <b>완료여부 체크</b><br><span style="color:#6b7280;font-size:13px;">"11일 미팅 회의록 어디 있지?" → 11일 공유일정 페이지 안을 확인하면 돼요.</span></p></div>
+        <div class="feat-step"><div class="feat-num">5</div><p>매주 월요일 오전 9시 30분, <b>주간회의록이 공유일정에 자동 생성</b>돼요. 안건·결정사항을 채워넣으면 돼요.</p></div>
+      </div>
+    </div>
+
+    <!-- ⑤ 전체 현황 파악 -->
+    <div class="tab-panel">
+      <div class="scenario">
+        <b>이번 분기 프로젝트들이 어떻게 돌아가고 있는지 한눈에 보고 싶어요.</b><br>
+        <span class="ctx">프로젝트 DB의 다양한 뷰를 목적에 맞게 골라 쓰면 돼요.</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:4px 16px;">
+        <div class="feat-step"><div class="feat-num">1</div><p>대시보드 <span class="feat-tag view">타임라인</span> 탭 → 시작일 기준 프로젝트·에픽 일정 흐름을 시각적으로 파악해요.</p></div>
+        <div class="feat-step"><div class="feat-num">2</div><p>프로젝트 DB → <span class="feat-tag view">프로젝트 현황</span> 뷰 → 프로젝트별 진행률 한눈에 확인</p></div>
+        <div class="feat-step"><div class="feat-num">3</div><p><span class="feat-tag view">칸반보드</span> 뷰 → 진행상태(시작전·진행중·완료·보류) 컬럼별로 프로젝트 현황을 시각화해요.</p></div>
+        <div class="feat-step"><div class="feat-num">4</div><p><span class="feat-tag view">담당자별</span> 뷰 → 팀원별로 어떤 업무가 얼마나 있는지 확인해요.</p></div>
+        <div class="feat-step"><div class="feat-num">5</div><p><span class="feat-tag view">전체(빈값확인)</span> 뷰 → 우선순위·담당자·시작일·마감일 중 하나라도 비어있는 항목이 표시돼요.<br><span style="color:#6b7280;font-size:13px;">주기적으로 확인해서 빈값을 채워주세요.</span></p></div>
+      </div>
+    </div>
+
+    <!-- ⑥ 자료 찾기·공유 -->
+    <div class="tab-panel">
+      <div class="scenario">
+        <b>마케팅 관련 좋은 아티클을 발견했어요. 팀에 공유하고 나중에 다시 찾기도 쉽게 하고 싶어요.</b><br>
+        <span class="ctx">🔍 공유자료실에 올려두면 팀 전체가 분야별·유형별로 언제든 찾을 수 있어요.</span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:10px;padding:4px 16px;">
+        <div class="feat-step"><div class="feat-num">1</div><p>공유자료실 섹션 → 자료 추가 버튼 클릭<br><b>파일/링크·한줄요약·분야·자료유형·사업부</b>를 입력해요. 한줄요약을 잘 써두면 나중에 찾기 훨씬 편해요.</p></div>
+        <div class="feat-step"><div class="feat-num">2</div><p>자료를 찾을 때는 목적에 맞는 뷰를 골라요<br>
+        <span class="feat-tag view">사업부별</span> BD·LB·Tech 기준 &nbsp;·&nbsp;
+        <span class="feat-tag view">분야별</span> 마케팅·영업 등 &nbsp;·&nbsp;
+        <span class="feat-tag view">자료유형별</span> 아티클·레퍼런스·영상 등</p></div>
+        <div class="feat-step"><div class="feat-num">3</div><p>자주 참고하는 자료는 <b>즐겨찾기</b>에 나를 추가 → <span class="feat-tag view">내 즐겨찾기</span> 뷰에서 바로 접근할 수 있어요.</p></div>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
 </div>
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+</script>
 </body>
 </html>
