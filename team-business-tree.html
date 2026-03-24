@@ -122,8 +122,8 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     <button class="nav-btn on" onclick="navTo('sec-structure')">전체 구조</button>
     <button class="nav-btn"   onclick="navTo('sec-prep')">사전 준비</button>
     <button class="nav-btn"   onclick="navTo('sec-concept')">개념</button>
-    <button class="nav-btn"   onclick="navTo('sec-rule')">팀 약속</button>
     <button class="nav-btn"   onclick="navTo('sec-howto')">사용법</button>
+    <button class="nav-btn"   onclick="navTo('sec-rule')">팀 약속</button>
     <button class="nav-btn"   onclick="navTo('sec-guide')">기능 가이드</button>
   </div>
 </nav>
@@ -513,9 +513,83 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     </div>
   </div>
 
-  <!-- ── 04 · 팀 약속 ── -->
+  <!-- ── 04 · 사용법 ── -->
+  <div class="card" id="sec-howto">
+    <div class="sec-label">04 · 사용법</div>
+    <div class="sec-title">처음 써보는 분을 위한 단계별 가이드</div>
+    <div class="sec-desc">순서대로 따라 하면 바로 쓸 수 있어요.</div>
+    <div class="sec-divider"></div>
+
+    <div style="border:1px solid #e5e7eb;border-radius:12px;padding:4px 20px;background:white;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>대시보드 열기</h4>
+          <p>노션에서 <b>Team Business 대시보드</b>를 열어요. 이 페이지가 모든 것의 시작이에요.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>내 할 일 확인하기</h4>
+          <p>🥊 프로젝트 섹션에서 <b>"내 담당" 뷰</b>를 클릭하면 내가 담당자로 지정된 항목만 보여요. 매일 아침 이 뷰로 하루를 시작하세요.<br>
+          <span style="color:#6b7280;">(내 개인 페이지에서 시작할 수도 있어요. 개인 페이지 안에서 필터·정렬 등 보기 뷰는 자유롭게 원하는 대로 바꿔가며 사용할 수 있어요.)</span></p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+        <div class="step" style="border-right:1px solid #f3f4f6;padding-right:20px;">
+          <div class="step-num">3</div>
+          <div>
+            <h4>새 할 일 만들기</h4>
+            <p><b>+ 새로 만들기</b>를 눌러 항목을 추가해요.<br><br>
+            <b>자동으로 채워지는 값</b> (생성 후 변경 가능)<br>
+            → <b>담당자</b> · <b>시작일</b> · <b>진행상태</b> (기본값: 시작 전)<br><br>
+            <b>직접 입력해야 하는 값</b><br>
+            → <b>레벨</b> (🏆 프로젝트 / 📦 에픽 / ✅ 태스크 중 선택)<br>
+            → <b>분야</b> (사업기획 / 사업운영 / 주류사업 등)<br>
+            → <b>우선순위</b> (P1~P4 중 선택)<br>
+            → <b>마감일</b></p>
+          </div>
+        </div>
+        <div class="step" style="padding-left:20px;">
+          <div class="step-num">4</div>
+          <div>
+            <h4>진행상태를 기록해요</h4>
+            <p>진행률은 <b>체크박스 기준</b>으로 집계돼요.<br>
+            완료된 태스크는 반드시 체크를 표시해서 완료 처리해주세요.<br>
+            세부 진행상태는 <b>상태값</b>으로 표시하면 돼요.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+        <div class="step" style="border-right:1px solid #f3f4f6;padding-right:20px;">
+          <div class="step-num">5</div>
+          <div>
+            <h4>미팅 후 회의록은 공유일정 안에 남겨요</h4>
+            <p>팀 전체가 알아야 하는 일정은 <b>📅 공유일정</b>에 추가해요.<br>
+            회의 시작 전 <b>녹음 버튼</b>을 눌러 진행하고, 미팅이 끝나면 <b>완료 여부를 체크</b>해주세요.</p>
+          </div>
+        </div>
+        <div class="step" style="padding-left:20px;">
+          <div class="step-num">6</div>
+          <div>
+            <h4>주간회의 기록 남기기 (매주 월요일 오전 9시 30분)</h4>
+            <p>해당 날짜 공유일정 페이지에 주간회의록이 <b>자동으로 생성</b>돼요.<br>
+            주요 논의 내용과 <b>액션 아이템</b>을 기록해요. 안건이 있다면 미리 추가해둬요.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      💡 <b>헷갈릴 때 이것만 기억하세요</b><br>
+      업무는 → 🥊 프로젝트 DB &nbsp;·&nbsp; 일정/회의는 → 📅 공유일정
+    </div>
+  </div>
+
+  <!-- ── 05 · 팀 약속 ── -->
   <div class="card" id="sec-rule">
-    <div class="sec-label">04 · 팀 약속</div>
+    <div class="sec-label">05 · 팀 약속</div>
     <div class="sec-title">함께 지켜요 👋</div>
     <div class="sec-desc">각자의 작은 습관이 모여 팀 전체를 빠르게 움직여요.</div>
 
@@ -591,80 +665,6 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
         </div>
       </div>
 
-    </div>
-  </div>
-
-  <!-- ── 05 · 사용법 ── -->
-  <div class="card" id="sec-howto">
-    <div class="sec-label">05 · 사용법</div>
-    <div class="sec-title">처음 써보는 분을 위한 단계별 가이드</div>
-    <div class="sec-desc">순서대로 따라 하면 바로 쓸 수 있어요.</div>
-    <div class="sec-divider"></div>
-
-    <div style="border:1px solid #e5e7eb;border-radius:12px;padding:4px 20px;background:white;">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div>
-          <h4>대시보드 열기</h4>
-          <p>노션에서 <b>Team Business 대시보드</b>를 열어요. 이 페이지가 모든 것의 시작이에요.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div>
-          <h4>내 할 일 확인하기</h4>
-          <p>🥊 프로젝트 섹션에서 <b>"내 담당" 뷰</b>를 클릭하면 내가 담당자로 지정된 항목만 보여요. 매일 아침 이 뷰로 하루를 시작하세요.<br>
-          <span style="color:#6b7280;">(내 개인 페이지에서 시작할 수도 있어요. 개인 페이지 안에서 필터·정렬 등 보기 뷰는 자유롭게 원하는 대로 바꿔가며 사용할 수 있어요.)</span></p>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-        <div class="step" style="border-right:1px solid #f3f4f6;padding-right:20px;">
-          <div class="step-num">3</div>
-          <div>
-            <h4>새 할 일 만들기</h4>
-            <p><b>+ 새로 만들기</b>를 눌러 항목을 추가해요.<br><br>
-            <b>자동으로 채워지는 값</b> (생성 후 변경 가능)<br>
-            → <b>담당자</b> · <b>시작일</b> · <b>진행상태</b> (기본값: 시작 전)<br><br>
-            <b>직접 입력해야 하는 값</b><br>
-            → <b>레벨</b> (🏆 프로젝트 / 📦 에픽 / ✅ 태스크 중 선택)<br>
-            → <b>분야</b> (사업기획 / 사업운영 / 주류사업 등)<br>
-            → <b>우선순위</b> (P1~P4 중 선택)<br>
-            → <b>마감일</b></p>
-          </div>
-        </div>
-        <div class="step" style="padding-left:20px;">
-          <div class="step-num">4</div>
-          <div>
-            <h4>진행상태를 기록해요</h4>
-            <p>진행률은 <b>체크박스 기준</b>으로 집계돼요.<br>
-            완료된 태스크는 반드시 체크를 표시해서 완료 처리해주세요.<br>
-            세부 진행상태는 <b>상태값</b>으로 표시하면 돼요.</p>
-          </div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-        <div class="step" style="border-right:1px solid #f3f4f6;padding-right:20px;">
-          <div class="step-num">5</div>
-          <div>
-            <h4>미팅 후 회의록은 공유일정 안에 남겨요</h4>
-            <p>팀 전체가 알아야 하는 일정은 <b>📅 공유일정</b>에 추가해요.<br>
-            회의 시작 전 <b>녹음 버튼</b>을 눌러 진행하고, 미팅이 끝나면 <b>완료 여부를 체크</b>해주세요.</p>
-          </div>
-        </div>
-        <div class="step" style="padding-left:20px;">
-          <div class="step-num">6</div>
-          <div>
-            <h4>주간회의 기록 남기기 (매주 월요일 오전 9시 30분)</h4>
-            <p>해당 날짜 공유일정 페이지에 주간회의록이 <b>자동으로 생성</b>돼요.<br>
-            주요 논의 내용과 <b>액션 아이템</b>을 기록해요. 안건이 있다면 미리 추가해둬요.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tip">
-      💡 <b>헷갈릴 때 이것만 기억하세요</b><br>
-      업무는 → 🥊 프로젝트 DB &nbsp;·&nbsp; 일정/회의는 → 📅 공유일정
     </div>
   </div>
 
@@ -779,7 +779,7 @@ function switchTab(idx) {
   document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
 }
 
-const _navSecs = ['sec-structure','sec-prep','sec-concept','sec-rule','sec-howto','sec-guide'];
+const _navSecs = ['sec-structure','sec-prep','sec-concept','sec-howto','sec-rule','sec-guide'];
 function navTo(id) {
   const el = document.getElementById(id);
   if (!el) return;
