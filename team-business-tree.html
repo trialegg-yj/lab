@@ -120,6 +120,7 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 <nav class="top-nav">
   <div class="top-nav-inner">
     <button class="nav-btn on" onclick="navTo('sec-structure')">전체 구조</button>
+    <button class="nav-btn"   onclick="navTo('sec-prep')">사전 준비</button>
     <button class="nav-btn"   onclick="navTo('sec-concept')">개념</button>
     <button class="nav-btn"   onclick="navTo('sec-howto')">사용법</button>
     <button class="nav-btn"   onclick="navTo('sec-guide')">기능 가이드</button>
@@ -255,9 +256,74 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     </div>
   </div>
 
-  <!-- ── 02 · 개념 ── -->
+  <!-- ── 02 · 사전 준비 ── -->
+  <div class="card" id="sec-prep">
+    <div class="sec-label">02 · 사전 준비</div>
+    <div class="sec-title">시작 전에 이것만 세팅해 두세요</div>
+    <div class="sec-desc">한 번만 해두면 팀과의 협업이 훨씬 편해져요.</div>
+
+    <!-- 준비 1: 슬랙 노션 알림 -->
+    <div class="concept">
+      <div class="concept-head">
+        <span class="concept-icon">🔔</span>
+        <span class="concept-name">슬랙에서 노션 알림 받기</span>
+        <span class="concept-tag">1회 설정</span>
+      </div>
+      <div class="concept-body">
+        담당자로 지정되거나 댓글이 달리면 <b>슬랙으로 알림</b>이 와요.<br>
+        아래 순서대로 연동해 두면 노션을 직접 열지 않아도 바로 확인할 수 있어요.
+      </div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;color:#9ca3af;margin-bottom:6px;letter-spacing:1px;">STEP 1</div>
+          <img src="슬랙 노션 알림 01.png" alt="슬랙 노션 알림 연동 01" style="width:100%;border-radius:8px;border:1px solid #e5e7eb;">
+        </div>
+        <div style="flex:1;min-width:200px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;color:#9ca3af;margin-bottom:6px;letter-spacing:1px;">STEP 2</div>
+          <img src="슬랙 노션 알림 02.png" alt="슬랙 노션 알림 연동 02" style="width:100%;border-radius:8px;border:1px solid #e5e7eb;">
+        </div>
+        <div style="flex:1;min-width:200px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;color:#9ca3af;margin-bottom:6px;letter-spacing:1px;">STEP 3</div>
+          <img src="슬랙 노션 알림 03.png" alt="슬랙 노션 알림 연동 03" style="width:100%;border-radius:8px;border:1px solid #e5e7eb;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 준비 2: 슬랙 채널 입장 -->
+    <div class="concept" style="margin-bottom:0;">
+      <div class="concept-head">
+        <span class="concept-icon">📢</span>
+        <div>
+          <div class="concept-name">슬랙 채널에 입장해 주세요</div>
+          <div style="font-size:13px;color:#9ca3af;margin-top:2px;">#alert-div-biz</div>
+        </div>
+        <span class="concept-tag">채널 입장</span>
+      </div>
+      <div class="concept-body" style="margin-top:10px;">
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">⏰</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:3px;">매일 오전 9시 30분 — 빈값 알림</div>
+              <div style="font-size:13px;color:#6b7280;line-height:1.7;">필수 항목이 비어있는 페이지가 있으면 이 채널에 알림이 와요.<br>내가 담당자인 항목이 있다면 <b>분야·우선순위·마감일</b> 등 빠진 값을 채워주세요.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="font-size:18px;flex-shrink:0;">⚡</span>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:3px;">매일 오전 9시 — 자동 채우기</div>
+              <div style="font-size:13px;color:#6b7280;line-height:1.7;">번거로움을 줄이기 위해, <b>분야·우선순위</b>는 상위 항목 값을 기반으로 자동으로 채워져요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── 03 · 개념 ── -->
   <div class="card" id="sec-concept">
-    <div class="sec-label">02 · 개념</div>
+    <div class="sec-label">03 · 개념</div>
     <div class="sec-title">꼭 알아야 할 기본 개념</div>
     <div class="sec-desc">이 세 가지만 이해하면 바로 쓸 수 있어요.</div>
 
@@ -445,9 +511,9 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     </div>
   </div>
 
-  <!-- ── 03 · 사용법 ── -->
+  <!-- ── 04 · 사용법 ── -->
   <div class="card" id="sec-howto">
-    <div class="sec-label">03 · 사용법</div>
+    <div class="sec-label">04 · 사용법</div>
     <div class="sec-title">처음 써보는 분을 위한 단계별 가이드</div>
     <div class="sec-desc">순서대로 따라 하면 바로 쓸 수 있어요.</div>
     <div class="sec-divider"></div>
@@ -514,9 +580,9 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     </div>
   </div>
 
-  <!-- ── 04 · 기능 가이드 ── -->
+  <!-- ── 05 · 기능 가이드 ── -->
   <div class="card" id="sec-guide">
-    <div class="sec-label">04 · 기능 가이드</div>
+    <div class="sec-label">05 · 기능 가이드</div>
     <div class="sec-title">상황별로 이렇게 써요</div>
     <div class="sec-desc">내 상황과 가장 가까운 케이스를 선택하세요.</div>
     <div class="sec-divider"></div>
@@ -625,7 +691,7 @@ function switchTab(idx) {
   document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
 }
 
-const _navSecs = ['sec-structure','sec-concept','sec-howto','sec-guide'];
+const _navSecs = ['sec-structure','sec-prep','sec-concept','sec-howto','sec-guide'];
 function navTo(id) {
   const el = document.getElementById(id);
   if (!el) return;
