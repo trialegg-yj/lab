@@ -119,9 +119,9 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 
 <nav class="top-nav">
   <div class="top-nav-inner">
-    <button class="nav-btn on" onclick="navTo('sec-overview')">개요</button>
-    <button class="nav-btn"   onclick="navTo('sec-structure')">전체 구조</button>
+    <button class="nav-btn on" onclick="navTo('sec-structure')">전체 구조</button>
     <button class="nav-btn"   onclick="navTo('sec-concept')">개념</button>
+    <button class="nav-btn"   onclick="navTo('sec-overview')">개요</button>
     <button class="nav-btn"   onclick="navTo('sec-howto')">사용법</button>
     <button class="nav-btn"   onclick="navTo('sec-guide')">기능 가이드</button>
   </div>
@@ -131,76 +131,6 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 
   <h1>Team Business 노션 구조도</h1>
   <p class="sub">2026년 3월 24일 기준</p>
-
-  <!-- ── 개요 ── -->
-  <div class="card" id="sec-overview">
-    <div class="sec-label">개요</div>
-    <div class="sec-title">전체 기능 한눈에 보기</div>
-    <div class="sec-desc">Team Business 대시보드에서 쓸 수 있는 DB·버튼·뷰를 모두 정리했어요.</div>
-    <div class="sec-divider"></div>
-
-    <!-- 🥊 프로젝트 -->
-    <div style="margin-bottom:20px;">
-      <div style="font-size:15px;font-weight:800;color:#4c1d95;margin-bottom:10px;">🥊 프로젝트 DB — 핵심</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:8px;">추가 버튼</div>
-          <div style="display:flex;flex-direction:column;gap:5px;">
-            <span style="font-size:13px;color:#374151;">▸ 프로젝트 추가하기</span>
-            <span style="font-size:13px;color:#374151;">▸ 에픽 추가하기</span>
-            <span style="font-size:13px;color:#374151;">▸ 태스크 추가하기 (직접 진행)</span>
-            <span style="font-size:13px;color:#374151;">▸ 태스크 추가하기 (요청)</span>
-          </div>
-        </div>
-        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:8px;">대시보드 뷰 (3)</div>
-          <div style="display:flex;flex-direction:column;gap:5px;">
-            <span style="font-size:13px;color:#374151;">▸ 타임라인 — 일정 흐름 시각화</span>
-            <span style="font-size:13px;color:#374151;">▸ 분야별 — 카테고리 그룹핑</span>
-            <span style="font-size:13px;color:#374151;">▸ 내 프로젝트 — 내 담당 항목만</span>
-          </div>
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin:10px 0 8px;">전체 DB 뷰 (9)</div>
-          <div style="display:flex;flex-direction:column;gap:5px;">
-            <span style="font-size:13px;color:#374151;">▸ 전체 · 전체(빈값확인) · 내 담당</span>
-            <span style="font-size:13px;color:#374151;">▸ 칸반보드 · 담당자별</span>
-            <span style="font-size:13px;color:#374151;">▸ 프로젝트 현황 · 에픽 현황 · 태스크 현황</span>
-            <span style="font-size:13px;color:#374151;">▸ 첨부파일 있는 프로젝트</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 나머지 DB -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
-        <div style="font-size:14px;font-weight:800;color:#374151;margin-bottom:8px;">📅 공유일정</div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:6px;">뷰 (3)</div>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <span style="font-size:13px;color:#374151;">▸ 달력 — 월·주 캘린더</span>
-          <span style="font-size:13px;color:#374151;">▸ 표 — 전체 테이블</span>
-          <span style="font-size:13px;color:#374151;">▸ 첨부파일 있는 일정</span>
-        </div>
-      </div>
-      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
-        <div style="font-size:14px;font-weight:800;color:#374151;margin-bottom:8px;">🗓️ 주간회의</div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:6px;">뷰 (2)</div>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <span style="font-size:13px;color:#374151;">▸ 전체 현황 — 순서 정렬</span>
-          <span style="font-size:13px;color:#374151;">▸ 팀별 — BD·LB·운영 그룹핑</span>
-        </div>
-      </div>
-      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
-        <div style="font-size:14px;font-weight:800;color:#374151;margin-bottom:8px;">🔍 공유자료실</div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:6px;">뷰 (4)</div>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <span style="font-size:13px;color:#374151;">▸ 사업부별</span>
-          <span style="font-size:13px;color:#374151;">▸ 분야별</span>
-          <span style="font-size:13px;color:#374151;">▸ 자료유형별</span>
-          <span style="font-size:13px;color:#374151;">▸ 내 즐겨찾기</span>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ── MAIN CHART ── -->
   <div class="card" id="sec-structure">
@@ -454,6 +384,76 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
     </div>
   </div>
 
+  <!-- ── 개요 ── -->
+  <div class="card" id="sec-overview">
+    <div class="sec-label">개요</div>
+    <div class="sec-title">전체 기능 한눈에 보기</div>
+    <div class="sec-desc">Team Business 대시보드에서 쓸 수 있는 DB·버튼·뷰를 모두 정리했어요.</div>
+    <div class="sec-divider"></div>
+
+    <!-- 🥊 프로젝트 -->
+    <div style="margin-bottom:20px;">
+      <div style="font-size:15px;font-weight:800;color:#4c1d95;margin-bottom:10px;">🥊 프로젝트 DB — 핵심</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:8px;">추가 버튼</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <span style="font-size:13px;color:#374151;">▸ 프로젝트 추가하기</span>
+            <span style="font-size:13px;color:#374151;">▸ 에픽 추가하기</span>
+            <span style="font-size:13px;color:#374151;">▸ 태스크 추가하기 (직접 진행)</span>
+            <span style="font-size:13px;color:#374151;">▸ 태스크 추가하기 (요청)</span>
+          </div>
+        </div>
+        <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:8px;">대시보드 뷰 (3)</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <span style="font-size:13px;color:#374151;">▸ 타임라인 — 일정 흐름 시각화</span>
+            <span style="font-size:13px;color:#374151;">▸ 분야별 — 카테고리 그룹핑</span>
+            <span style="font-size:13px;color:#374151;">▸ 내 프로젝트 — 내 담당 항목만</span>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin:10px 0 8px;">전체 DB 뷰 (9)</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <span style="font-size:13px;color:#374151;">▸ 전체 · 전체(빈값확인) · 내 담당</span>
+            <span style="font-size:13px;color:#374151;">▸ 칸반보드 · 담당자별</span>
+            <span style="font-size:13px;color:#374151;">▸ 프로젝트 현황 · 에픽 현황 · 태스크 현황</span>
+            <span style="font-size:13px;color:#374151;">▸ 첨부파일 있는 프로젝트</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 나머지 DB -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:14px;font-weight:800;color:#374151;margin-bottom:8px;">📅 공유일정</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:6px;">뷰 (3)</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span style="font-size:13px;color:#374151;">▸ 달력 — 월·주 캘린더</span>
+          <span style="font-size:13px;color:#374151;">▸ 표 — 전체 테이블</span>
+          <span style="font-size:13px;color:#374151;">▸ 첨부파일 있는 일정</span>
+        </div>
+      </div>
+      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:14px;font-weight:800;color:#374151;margin-bottom:8px;">🗓️ 주간회의</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:6px;">뷰 (2)</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span style="font-size:13px;color:#374151;">▸ 전체 현황 — 순서 정렬</span>
+          <span style="font-size:13px;color:#374151;">▸ 팀별 — BD·LB·운영 그룹핑</span>
+        </div>
+      </div>
+      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:14px;font-weight:800;color:#374151;margin-bottom:8px;">🔍 공유자료실</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#9ca3af;margin-bottom:6px;">뷰 (4)</div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span style="font-size:13px;color:#374151;">▸ 사업부별</span>
+          <span style="font-size:13px;color:#374151;">▸ 분야별</span>
+          <span style="font-size:13px;color:#374151;">▸ 자료유형별</span>
+          <span style="font-size:13px;color:#374151;">▸ 내 즐겨찾기</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── 03 · 사용법 ── -->
   <div class="card" id="sec-howto">
     <div class="sec-label">03 · 사용법</div>
@@ -637,7 +637,7 @@ function switchTab(idx) {
   document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
 }
 
-const _navSecs = ['sec-overview','sec-structure','sec-concept','sec-howto','sec-guide'];
+const _navSecs = ['sec-structure','sec-concept','sec-overview','sec-howto','sec-guide'];
 function navTo(id) {
   const el = document.getElementById(id);
   if (!el) return;
