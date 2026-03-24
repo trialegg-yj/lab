@@ -88,6 +88,13 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 
 .tip { background:#ede9fe; border-radius:10px; padding:14px 16px; font-size:14px; color:#4c1d95; line-height:1.7; margin-top:14px; }
 
+/* 상단 네비 */
+.top-nav { position:sticky; top:0; z-index:100; background:rgba(243,244,246,0.92); backdrop-filter:blur(8px); padding:10px 0 8px; margin-bottom:0; }
+.top-nav-inner { max-width:960px; margin:0 auto; padding:0 20px; display:flex; gap:6px; flex-wrap:wrap; }
+.nav-btn { padding:8px 18px; border-radius:20px; border:1.5px solid #e5e7eb; background:white; font-size:13px; font-weight:700; color:#6b7280; cursor:pointer; transition:all .15s; white-space:nowrap; }
+.nav-btn:hover { border-color:#c4b5fd; color:#4f46e5; }
+.nav-btn.on { background:#4f46e5; border-color:#4f46e5; color:white; }
+
 /* 탭 */
 .tab-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:20px; }
 .tab-btn { padding:7px 14px; border-radius:20px; border:1.5px solid #e5e7eb; background:white; font-size:13px; font-weight:600; color:#6b7280; cursor:pointer; transition:all .15s; }
@@ -109,13 +116,23 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 </style>
 </head>
 <body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="nav-btn on" onclick="navTo('sec-structure')">전체 구조</button>
+    <button class="nav-btn"   onclick="navTo('sec-concept')">개념</button>
+    <button class="nav-btn"   onclick="navTo('sec-howto')">사용법</button>
+    <button class="nav-btn"   onclick="navTo('sec-guide')">기능 가이드</button>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <h1>Team Business 노션 구조도</h1>
   <p class="sub">2026년 3월 24일 기준</p>
 
   <!-- ── MAIN CHART ── -->
-  <div class="card">
+  <div class="card" id="sec-structure">
     <div class="card-label">전체 구조</div>
 
     <svg viewBox="0 0 900 430"
@@ -239,7 +256,7 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
   </div>
 
   <!-- ── 02 · 개념 ── -->
-  <div class="card">
+  <div class="card" id="sec-concept">
     <div class="sec-label">02 · 개념</div>
     <div class="sec-title">꼭 알아야 할 기본 개념</div>
     <div class="sec-desc">이 세 가지만 이해하면 바로 쓸 수 있어요.</div>
@@ -367,7 +384,7 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
   </div>
 
   <!-- ── 03 · 사용법 ── -->
-  <div class="card">
+  <div class="card" id="sec-howto">
     <div class="sec-label">03 · 사용법</div>
     <div class="sec-title">처음 써보는 분을 위한 단계별 가이드</div>
     <div class="sec-desc">순서대로 따라 하면 바로 쓸 수 있어요.</div>
@@ -436,7 +453,7 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
   </div>
 
   <!-- ── 04 · 기능 가이드 ── -->
-  <div class="card">
+  <div class="card" id="sec-guide">
     <div class="sec-label">04 · 기능 가이드</div>
     <div class="sec-title">상황별로 이렇게 써요</div>
     <div class="sec-desc">내 상황과 가장 가까운 케이스를 선택하세요.</div>
@@ -548,6 +565,27 @@ function switchTab(idx) {
   document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
   document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
 }
+
+const _navSecs = ['sec-structure','sec-concept','sec-howto','sec-guide'];
+function navTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const offset = document.querySelector('.top-nav').offsetHeight + 12;
+  window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior:'smooth' });
+  _setNavActive(id);
+}
+function _setNavActive(id) {
+  document.querySelectorAll('.nav-btn').forEach((b,i)=>b.classList.toggle('on', _navSecs[i]===id));
+}
+window.addEventListener('scroll', ()=>{
+  const offset = document.querySelector('.top-nav').offsetHeight + 20;
+  let cur = _navSecs[0];
+  _navSecs.forEach(id=>{
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= offset) cur = id;
+  });
+  _setNavActive(cur);
+}, { passive:true });
 </script>
 </body>
 </html>
