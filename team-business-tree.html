@@ -137,7 +137,7 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
   <div class="card" id="sec-structure">
     <div class="card-label">전체 구조</div>
 
-    <svg viewBox="0 0 900 430"
+    <svg viewBox="0 0 1040 430"
          xmlns="http://www.w3.org/2000/svg"
          style="width:100%;display:block;"
          font-family="system-ui,-apple-system,'Apple Color Emoji','Segoe UI Emoji',sans-serif">
@@ -149,14 +149,15 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 
       <!-- Dashboard → H-line -->
       <line x1="450" y1="76" x2="450" y2="102" stroke="#d1d5db" stroke-width="1.5"/>
-      <!-- H-line across all 5 DBs (cx: 160 ~ 740) -->
-      <line x1="160" y1="102" x2="740" y2="102" stroke="#d1d5db" stroke-width="1.5"/>
+      <!-- H-line across all 6 DBs (cx: 160 ~ 884) -->
+      <line x1="160" y1="102" x2="884" y2="102" stroke="#d1d5db" stroke-width="1.5"/>
       <!-- V-drops to each DB -->
       <line x1="160" y1="102" x2="160" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="314" y1="102" x2="314" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="450" y1="102" x2="450" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="594" y1="102" x2="594" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="740" y1="102" x2="740" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
+      <line x1="884" y1="102" x2="884" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
 
       <!-- ═══ LEVEL 1: 5 DB BOXES ═══
            DB1: x=96  w=128 cx=160
@@ -192,6 +193,12 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
       <rect x="676" y="110" width="128" height="60" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1.5"/>
       <text x="740" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">🧑 멤버 목록 DB</text>
       <text x="740" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">팀원 정보</text>
+
+      <!-- DB6: 대시보드 개선사항 -->
+      <rect x="820" y="110" width="128" height="60" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+      <text x="884" y="133" text-anchor="middle" fill="#166534" font-size="12" font-weight="700">💬 대시보드</text>
+      <text x="884" y="150" text-anchor="middle" fill="#166534" font-size="12" font-weight="700">개선사항 DB</text>
+      <text x="884" y="165" text-anchor="middle" fill="#4ade80" font-size="9.5">폼 제출 시 자동 수집</text>
 
 
 <!-- ═══ SUB-TREE: 프로젝트 DB 내부 ═══ -->
@@ -253,6 +260,10 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
       <div class="lg">
         <div class="lg-sw" style="background:#f9fafb;border:1.5px solid #d1d5db;"></div>
         DB 내부 레벨 구조
+      </div>
+      <div class="lg">
+        <div class="lg-sw" style="background:#f0fdf4;border:1.5px solid #86efac;"></div>
+        개선사항 수집 (폼 자동 연동)
       </div>
     </div>
   </div>
