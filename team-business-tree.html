@@ -149,21 +149,19 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
 
       <!-- Dashboard → H-line -->
       <line x1="450" y1="76" x2="450" y2="102" stroke="#d1d5db" stroke-width="1.5"/>
-      <!-- H-line across all 5 DBs (cx: 160 ~ 740) -->
-      <line x1="160" y1="102" x2="740" y2="102" stroke="#d1d5db" stroke-width="1.5"/>
+      <!-- H-line across 4 DBs (cx: 160 ~ 594) -->
+      <line x1="160" y1="102" x2="594" y2="102" stroke="#d1d5db" stroke-width="1.5"/>
       <!-- V-drops to each DB -->
       <line x1="160" y1="102" x2="160" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="314" y1="102" x2="314" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="450" y1="102" x2="450" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
       <line x1="594" y1="102" x2="594" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
-      <line x1="740" y1="102" x2="740" y2="110" stroke="#d1d5db" stroke-width="1.5"/>
 
-      <!-- ═══ LEVEL 1: 5 DB BOXES ═══
+      <!-- ═══ LEVEL 1: 4 DB BOXES ═══
            DB1: x=96  w=128 cx=160
-           DB2: x=250 w=128 cx=314  (gap=26 for relation line)
-           DB3: x=386 w=128 cx=450
-           DB4: x=530 w=128 cx=594
-           DB5: x=676 w=128 cx=740
+           DB2: x=250 w=128 cx=314
+           DB3: x=386 w=128 cx=450  (공유자료실)
+           DB4: x=530 w=128 cx=594  (멤버 목록)
            all y=110 h=60 bottom=170
       -->
 
@@ -178,20 +176,15 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
       <text x="314" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">📅 공유일정 DB</text>
       <text x="314" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">팀 전체 일정</text>
 
-      <!-- DB3: 주간회의 -->
+      <!-- DB3: 공유자료실 -->
       <rect x="386" y="110" width="128" height="60" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1.5"/>
-      <text x="450" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">🗓️ 주간회의 DB</text>
-      <text x="450" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">매주 회의 기록</text>
+      <text x="450" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">🔍 공유자료실 DB</text>
+      <text x="450" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">파일·링크 모음</text>
 
-      <!-- DB4: 공유자료실 -->
+      <!-- DB4: 멤버 목록 -->
       <rect x="530" y="110" width="128" height="60" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1.5"/>
-      <text x="594" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">🔍 공유자료실 DB</text>
-      <text x="594" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">파일·링크 모음</text>
-
-      <!-- DB5: 멤버 목록 -->
-      <rect x="676" y="110" width="128" height="60" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1.5"/>
-      <text x="740" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">🧑 멤버 목록 DB</text>
-      <text x="740" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">팀원 정보</text>
+      <text x="594" y="136" text-anchor="middle" fill="#374151" font-size="12.5" font-weight="700">🧑 멤버 목록 DB</text>
+      <text x="594" y="156" text-anchor="middle" fill="#9ca3af" font-size="10">팀원 정보</text>
 
 
 
@@ -221,20 +214,29 @@ h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
       <!-- "내부 구조" label -->
       <text x="160" y="414" text-anchor="middle" fill="#c4b5fd" font-size="10" font-weight="600">↑ 프로젝트 DB 내부 계층</text>
 
-      <!-- ═══ SUB: 공유일정 → 회의록 ═══ -->
-      <line x1="314" y1="170" x2="314" y2="190" stroke="#d1d5db" stroke-width="1.5"/>
-      <line x1="295" y1="190" x2="314" y2="190" stroke="#d1d5db" stroke-width="1.5"/>
-      <line x1="295" y1="190" x2="295" y2="210" stroke="#d1d5db" stroke-width="1.5"/>
-      <rect x="235" y="210" width="120" height="50" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
-      <text x="295" y="232" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">📝 회의록</text>
-      <text x="295" y="250" text-anchor="middle" fill="#9ca3af" font-size="10">미팅 전 녹음 시작 권장</text>
-      <text x="295" y="276" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="600">↑ 공유일정 안에 기록</text>
+      <!-- ═══ SUB: 공유일정 → 회의록 + 주간회의 ═══ -->
+      <!-- V from 공유일정 bottom → H-branch -->
+      <line x1="314" y1="170" x2="314" y2="192" stroke="#d1d5db" stroke-width="1.5"/>
+      <line x1="268" y1="192" x2="390" y2="192" stroke="#d1d5db" stroke-width="1.5"/>
+      <line x1="268" y1="192" x2="268" y2="210" stroke="#d1d5db" stroke-width="1.5"/>
+      <line x1="390" y1="192" x2="390" y2="210" stroke="#d1d5db" stroke-width="1.5"/>
 
-      <!-- ═══ SUB: 주간회의 → 히스토리 ═══ -->
-      <line x1="450" y1="170" x2="450" y2="210" stroke="#d1d5db" stroke-width="1.5"/>
-      <rect x="365" y="210" width="170" height="50" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
-      <text x="450" y="232" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">📚 주간회의 히스토리 DB</text>
-      <text x="450" y="250" text-anchor="middle" fill="#9ca3af" font-size="10">지난 회의 아카이브</text>
+      <!-- 회의록 -->
+      <rect x="210" y="210" width="116" height="50" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+      <text x="268" y="232" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">📝 회의록</text>
+      <text x="268" y="250" text-anchor="middle" fill="#9ca3af" font-size="10">미팅 전 녹음 시작 권장</text>
+      <text x="268" y="276" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="600">↑ 공유일정 안에 기록</text>
+
+      <!-- 주간회의 DB -->
+      <rect x="330" y="210" width="120" height="50" rx="8" fill="white" stroke="#e5e7eb" stroke-width="1.5"/>
+      <text x="390" y="232" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">🗓️ 주간회의 DB</text>
+      <text x="390" y="250" text-anchor="middle" fill="#9ca3af" font-size="10">매주 회의 기록</text>
+
+      <!-- 주간회의 → 히스토리 -->
+      <line x1="390" y1="260" x2="390" y2="278" stroke="#d1d5db" stroke-width="1.5"/>
+      <rect x="305" y="278" width="170" height="50" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+      <text x="390" y="300" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">📚 주간회의 히스토리 DB</text>
+      <text x="390" y="318" text-anchor="middle" fill="#9ca3af" font-size="10">지난 회의 아카이브</text>
 
     </svg>
 
